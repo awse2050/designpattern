@@ -1,5 +1,7 @@
 package ch04;
 
+import ch04.menu.Pizza;
+
 public abstract class PizzaStore {
 
 

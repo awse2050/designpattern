@@ -1,6 +1,6 @@
 package ch04.store;
 
-import ch04.Pizza;
+import ch04.menu.Pizza;
 import ch04.PizzaStore;
 
 public class NYPizzaStore extends PizzaStore {
