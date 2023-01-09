@@ -3,6 +3,9 @@ package ch04.menu;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 제품(객체) 클래스의 기본 뼈대가 된다.
+ */
 public abstract class Pizza {
 
     String name;
