@@ -17,4 +17,12 @@ public class LightOffCommand implements Command {
     public void execute() {
         light.off();
     }
+
+    /**
+     * 실행시 불을 끄기 때문에 취소할 때 다시 불을 키면 된다.
+     */
+    @Override
+    public void undo() {
+        light.on();
+    }
 }

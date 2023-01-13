@@ -12,6 +12,10 @@ public class RemoteControl {
      */
     Command[] onCommands;
     Command[] offCommands;
+    /**
+     * 실행한 커맨드의 마지막 커맨드가 가진 취소기능을 넣어둡니다.
+     */
+    Command undoCommand;
 
     public RemoteControl() {
         this.onCommands = new Command[7];
@@ -23,6 +27,8 @@ public class RemoteControl {
                     onCommands[index] = noCommand;
                     offCommands[index] = noCommand;
                 });
+
+        undoCommand = noCommand;
     }
 
     public void setCommand(int slot, Command onCommand, Command offCommand) {
@@ -32,11 +38,20 @@ public class RemoteControl {
 
     public void onButtonWasPushed(int slot) {
         onCommands[slot].execute();
+        // 활성화 이후 해당 작업의 취소 기능을 저장해둔다.
+        undoCommand = onCommands[slot];
     }
 
-    public void offButtonWasPushed(int slog) {
-        offCommands[slog].execute();
+    public void offButtonWasPushed(int slot) {
+        offCommands[slot].execute();
+        undoCommand = offCommands[slot];
     }
 
+    /**
+     * 사용자가 취소버튼을 누르면 마지막 커맨드를 취소시킵니다.
+     */
+    public void undoButtonWasPushed() {
+        undoCommand.undo();
+    }
 
 }
